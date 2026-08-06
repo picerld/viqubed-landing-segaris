@@ -1,43 +1,56 @@
-import { Link } from "react-router-dom"
-import { Check, Minus } from "lucide-react"
+import { Link } from "react-router-dom";
+import { Check, Minus } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { PageHeader } from "@/components/PageHeader"
-import { Reveal } from "@/components/Reveal"
-import { CtaSection } from "@/components/CtaSection"
-import { cn } from "@/lib/utils"
-import { plans, compareGroups, compareColumns } from "@/data/pricing"
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { PageHeader } from "@/components/PageHeader";
+import { Reveal } from "@/components/Reveal";
+import { CtaSection } from "@/components/CtaSection";
+import { Spotlight } from "@/components/Spotlight";
+import { cn } from "@/lib/utils";
+import { plans, compareGroups, compareColumns } from "@/data/pricing";
+import { GlowOrbs } from "@/components/GlowOrbs";
 
 export function Pricing() {
   return (
     <>
-      <PageHeader
-        title={
-          <>
-            Choose the Perfect Plan for{" "}
-            <span className="text-gradient-brand">
-              Your 3D Creation Needs
-            </span>
-          </>
-        }
-        description="Start for free or upgrade to access advanced 3D editing features, augmented reality, AI capabilities, and unlimited team collaboration."
-      />
+      <section className="relative">
+        <GlowOrbs />
+        <div className="mx-auto max-w-5xl px-5 pt-16 pb-10 text-center sm:px-8 sm:pt-24">
+          <Reveal>
+            {/* <Badge variant="subtle" className="mx-auto">
+                        <Sparkles className="size-3.5" />
+                        Market Solution
+                      </Badge> */}
+            <h1 className="text-foreground mx-auto mt-6 max-w-4xl text-4xl font-bold tracking-tight text-balance sm:text-6xl">
+              Choose the Perfect Plan for <br />{" "}
+              <span className="text-gradient-brand">
+                Your 3D Creation Needs
+              </span>
+            </h1>
+            <p className="text-muted-foreground mx-auto mt-6 max-w-2xl">
+              Start for free or upgrade to access advanced 3D editing features,
+              augmented reality, AI capabilities, and unlimited team
+              collaboration.
+            </p>
+          </Reveal>
+        </div>
+      </section>
 
       {/* Plan cards */}
       <section className="mx-auto max-w-7xl px-5 pb-20 sm:px-8">
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {plans.map((plan, i) => (
             <Reveal key={plan.id} delay={i * 0.06}>
-              <div
+              <Spotlight
                 className={cn(
                   "border-border/60 bg-card/40 relative flex h-full flex-col rounded-2xl border p-6 transition-all duration-300 hover:-translate-y-1",
                   plan.popular &&
-                    "border-primary/70 shadow-[0_20px_60px_-25px_var(--brand-primary)] ring-1 ring-primary/40"
+                    "border-primary/70 shadow-[0_20px_60px_-25px_var(--brand-primary)] ring-1 ring-primary/40",
                 )}
               >
                 {plan.popular && (
-                  <Badge className="absolute -top-3 left-1/2 -translate-x-1/2">
+                  <Badge className="absolute -top-3 left-20 -translate-x-1/2">
                     Most Popular
                   </Badge>
                 )}
@@ -53,7 +66,9 @@ export function Pricing() {
                   <span
                     className={cn(
                       "text-foreground font-bold",
-                      plan.enterprise ? "text-2xl text-gradient-brand" : "text-3xl"
+                      plan.enterprise
+                        ? "text-2xl text-gradient-brand"
+                        : "text-3xl",
                     )}
                   >
                     {plan.price}
@@ -89,7 +104,7 @@ export function Pricing() {
                 >
                   <Link to="/contact">{plan.cta}</Link>
                 </Button>
-              </div>
+              </Spotlight>
             </Reveal>
           ))}
         </div>
@@ -102,8 +117,8 @@ export function Pricing() {
             Compare Plan Specifications
           </h2>
           <p className="text-muted-foreground mx-auto mt-4 max-w-xl text-balance">
-            Detailed breakdown of capabilities, tools, and technical limits
-            for each plan.
+            Detailed breakdown of capabilities, tools, and technical limits for
+            each plan.
           </p>
         </Reveal>
 
@@ -116,7 +131,7 @@ export function Pricing() {
                   key={col}
                   className={cn(
                     "text-center",
-                    i === 2 ? "text-primary" : "text-foreground"
+                    i === 2 ? "text-primary" : "text-foreground",
                   )}
                 >
                   {col}
@@ -142,7 +157,7 @@ export function Pricing() {
                         key={i}
                         className={cn(
                           "flex justify-center text-center",
-                          i === 2 && "bg-primary/[0.05]"
+                          i === 2 && "bg-primary/[0.05]",
                         )}
                       >
                         {value === true ? (
@@ -155,7 +170,7 @@ export function Pricing() {
                               "text-xs",
                               i === 2
                                 ? "text-primary font-medium"
-                                : "text-muted-foreground"
+                                : "text-muted-foreground",
                             )}
                           >
                             {value}
@@ -173,5 +188,5 @@ export function Pricing() {
 
       <CtaSection />
     </>
-  )
+  );
 }

@@ -1,7 +1,8 @@
 import { useState } from "react"
 import { Play } from "lucide-react"
 
-import { topicImage } from "@/lib/images"
+import { useTopicImage } from "@/lib/useTopicImage"
+import { Spotlight } from "@/components/Spotlight"
 import { cn } from "@/lib/utils"
 
 export function MediaPlaceholder({
@@ -16,12 +17,16 @@ export function MediaPlaceholder({
   imageKeywords?: string
 }) {
   const [playing, setPlaying] = useState(false)
-  const [errored, setErrored] = useState(false)
+  const { src, loaded, failed, onLoad, onError } = useTopicImage(imageKeywords, {
+    width: 1280,
+    height: 720,
+  })
 
-  const showImage = imageKeywords && !errored
+  const showImage = !!src
 
   return (
-    <button
+    <Spotlight
+      as="button"
       type="button"
       onClick={() => setPlaying((v) => !v)}
       className={cn(
@@ -33,12 +38,19 @@ export function MediaPlaceholder({
     >
       {showImage && (
         <img
-          src={topicImage(imageKeywords, { width: 1280, height: 720 })}
+          src={src}
           alt=""
           loading="lazy"
-          onError={() => setErrored(true)}
-          className="absolute inset-0 h-full w-full object-cover"
+          onLoad={onLoad}
+          onError={onError}
+          className={cn(
+            "absolute inset-0 h-full w-full object-cover transition-opacity duration-500",
+            loaded ? "opacity-100" : "opacity-0"
+          )}
         />
+      )}
+      {showImage && !loaded && (
+        <div className="bg-card/40 absolute inset-0 animate-pulse" aria-hidden />
       )}
       <div
         className={cn(
@@ -51,7 +63,7 @@ export function MediaPlaceholder({
       <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 px-6">
         <span
           className={cn(
-            "bg-gradient-brand flex size-16 items-center justify-center rounded-2xl shadow-[0_8px_30px_-8px_var(--brand-primary)] transition-all duration-300 group-hover:scale-110",
+            "bg-primary flex size-16 items-center justify-center rounded-2xl shadow-[0_8px_30px_-8px_var(--brand-primary)] transition-all duration-300 group-hover:scale-110",
             playing && "scale-90 animate-pulse"
           )}
         >
@@ -65,8 +77,13 @@ export function MediaPlaceholder({
         >
           {playing ? "Playing preview…" : label}
         </span>
+        {!showImage && failed && (
+          <span className="text-muted-foreground/70 text-center text-[11px]">
+            Preview unavailable — tap to try again
+          </span>
+        )}
       </div>
       <div className="via-primary/60 absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-    </button>
+    </Spotlight>
   )
 }

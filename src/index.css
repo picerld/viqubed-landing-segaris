@@ -15,6 +15,7 @@
   --brand-primary-foreground: oklch(0.98 0.01 265);
   --brand-secondary: oklch(0.62 0.24 292);
   --brand-accent: oklch(0.7 0.18 240);
+  --brand-glow: oklch(0.72 0.16 262);
 
   --radius: 0.9rem;
 
@@ -37,13 +38,15 @@
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
   --ring: var(--brand-primary);
+
+  --text-gradient: linear-gradient(180deg, #2563eb, #4f46e5, #0891b2);
 }
 
 .dark {
   /* Deep navy/space background family, matching the reference design */
-  --background: oklch(0.145 0.02 265);
+  --background: oklch(0.09 0.015 265);
   --foreground: oklch(0.96 0.01 260);
-  --card: oklch(0.19 0.025 265 / 0.6);
+  --card: oklch(0.15 0.02 265 / 0.6);
   --card-foreground: oklch(0.96 0.01 260);
   --popover: oklch(0.17 0.025 265);
   --popover-foreground: oklch(0.96 0.01 260);
@@ -59,6 +62,8 @@
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 14%);
   --ring: var(--brand-primary);
+
+  --text-gradient: linear-gradient(180deg, #60a5fa, #a5b4fc, #67e8f9);
 }
 
 @theme inline {
@@ -90,7 +95,8 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 
-  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-sans:
+    "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
 }
 
 @layer base {
@@ -98,21 +104,31 @@
     @apply border-border outline-ring/50;
   }
   html {
-    color-scheme: dark;
+    color-scheme: light dark;
   }
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    transition:
+      background-color 0.35s ease,
+      color 0.35s ease;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
 
 @layer utilities {
   .text-gradient-brand {
-    background-image: linear-gradient(
-      90deg,
-      var(--brand-primary),
-      var(--brand-secondary)
-    );
+    background-image: var(--text-gradient);
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
@@ -126,26 +142,21 @@
     );
   }
 
-  /* Flat brand button — subtle top highlight only, no hue shift */
+  /* Flat solid brand button — no gradient, no hue shift */
   .bg-button-brand {
     background-color: var(--brand-primary);
-    background-image: linear-gradient(
-      180deg,
-      color-mix(in oklch, white 14%, var(--brand-primary)),
-      var(--brand-primary)
-    );
   }
 
   .bg-glow {
     background-image:
       radial-gradient(
         60% 50% at 15% 0%,
-        color-mix(in oklch, var(--brand-primary) 34%, transparent),
+        color-mix(in oklch, var(--brand-primary) 14%, transparent),
         transparent
       ),
       radial-gradient(
         50% 40% at 90% 10%,
-        color-mix(in oklch, var(--brand-secondary) 28%, transparent),
+        color-mix(in oklch, var(--brand-secondary) 12%, transparent),
         transparent
       );
   }
@@ -160,14 +171,42 @@
     background-image:
       radial-gradient(
         42% 38% at 16% 62%,
-        color-mix(in oklch, var(--brand-secondary) 22%, transparent) 0%,
+        color-mix(in oklch, var(--brand-secondary) 13%, transparent) 0%,
         transparent 62%
       ),
       radial-gradient(
         44% 36% at 84% 28%,
-        color-mix(in oklch, var(--brand-primary) 24%, transparent) 0%,
+        color-mix(in oklch, var(--brand-primary) 15%, transparent) 0%,
         transparent 62%
       );
     filter: blur(60px);
+    animation: glow-breathe 8s ease-in-out infinite;
+  }
+
+  @keyframes glow-breathe {
+    0%,
+    100% {
+      opacity: 0.8;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.08);
+    }
+  }
+
+  /* Cursor-tracking ambient glow used by <Spotlight> — mouse-only, see
+     component comment for why touch input is excluded. */
+  .spotlight-glow {
+    background: radial-gradient(
+      380px circle at var(--spot-x, 50%) var(--spot-y, 50%),
+      color-mix(in oklch, var(--brand-primary) 20%, transparent),
+      transparent 70%
+    );
+  }
+  @media (pointer: coarse) {
+    .spotlight-glow {
+      display: none;
+    }
   }
 }

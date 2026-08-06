@@ -44,7 +44,7 @@ export const solutions: Solution[] = [
     overview:
       "Static diagrams struggle to convey depth, layering, and spatial relationships in the human body. VIQUBED turns flat illustrations into fully rotatable, dissectible anatomical models with clinical hotspots students can explore at their own pace.",
     gradient: "from-rose-500 via-pink-500 to-red-600",
-    imageKeywords: "human,anatomy",
+    imageKeywords: "medical,doctor",
   },
   {
     slug: "engineering",
@@ -80,7 +80,7 @@ export const solutions: Solution[] = [
     overview:
       "Electrical schematics are notoriously hard to translate into physical intuition. VIQUBED renders wiring harnesses and control panels as manipulable 3D assemblies, complete with guided fault-finding simulations for technician training.",
     gradient: "from-yellow-400 via-amber-500 to-orange-600",
-    imageKeywords: "circuit,electronics",
+    imageKeywords: "electrical,wiring",
   },
   {
     slug: "product-design",
@@ -92,7 +92,7 @@ export const solutions: Solution[] = [
     overview:
       "Design reviews often stall when non-technical stakeholders can't parse a CAD render. Publishing an interactive, annotated 3D model — with embedded audio walkthroughs and technical documentation — keeps design and business teams aligned.",
     gradient: "from-fuchsia-500 via-purple-500 to-indigo-600",
-    imageKeywords: "prototype,design",
+    imageKeywords: "design,studio",
   },
   {
     slug: "presentation",
@@ -104,7 +104,7 @@ export const solutions: Solution[] = [
     overview:
       "A flat slide deck can't compete with a product you can spin, open, and explore. VIQUBED lets sales teams embed interactive 3D centerpieces directly into presentations, paired with annotations and audio to guide the pitch.",
     gradient: "from-violet-500 via-purple-500 to-fuchsia-600",
-    imageKeywords: "business,presentation",
+    imageKeywords: "presentation,meeting",
   },
   {
     slug: "advertorial",

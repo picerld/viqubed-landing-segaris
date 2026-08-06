@@ -5,6 +5,7 @@ import { Menu, X } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Logo } from "@/components/layout/Logo"
+import { ThemeToggle } from "@/components/ThemeToggle"
 import { cn } from "@/lib/utils"
 
 const navLinks = [
@@ -36,7 +37,7 @@ export function Navbar() {
       >
         <nav
           className={cn(
-            "mx-auto flex items-center justify-between transition-[height,border-radius,background-color,box-shadow,border-color,backdrop-filter] duration-400 ease-out",
+            "mx-auto grid grid-cols-[auto_1fr_auto] items-center transition-[height,border-radius,background-color,box-shadow,border-color,backdrop-filter] duration-400 ease-out md:grid-cols-[1fr_auto_1fr]",
             scrolled
               ? "h-14 rounded-full border border-border/60 bg-background/80 px-4 shadow-[0_16px_40px_-16px_rgba(0,0,0,0.65)] backdrop-blur-xl sm:px-5"
               : "h-16 rounded-full border border-transparent bg-transparent px-0"
@@ -44,7 +45,7 @@ export function Navbar() {
         >
           <Logo />
 
-          <ul className="hidden items-center gap-1 md:flex">
+          <ul className="hidden items-center justify-self-center gap-1 md:flex">
             {navLinks.map((link) => (
               <li key={link.to}>
                 <NavLink
@@ -52,32 +53,22 @@ export function Navbar() {
                   end={link.to === "/"}
                   className={({ isActive }) =>
                     cn(
-                      "relative rounded-md px-3.5 py-2 text-sm font-medium transition-colors",
+                      "rounded-md px-3.5 py-2 text-sm font-medium transition-colors",
                       isActive
-                        ? "text-foreground"
+                        ? "text-primary font-bold"
                         : "text-muted-foreground hover:text-foreground"
                     )
                   }
                 >
-                  {({ isActive }) => (
-                    <>
-                      {link.label}
-                      {isActive && (
-                        <motion.span
-                          layoutId="nav-active"
-                          className="bg-gradient-brand absolute inset-x-3 -bottom-px h-0.5 rounded-full"
-                          transition={{ type: "spring", stiffness: 400, damping: 32 }}
-                        />
-                      )}
-                    </>
-                  )}
+                  {link.label}
                 </NavLink>
               </li>
             ))}
           </ul>
 
-          <div className="hidden items-center gap-3 md:flex">
-            <Button variant="outline" size="sm" asChild>
+          <div className="hidden items-center justify-self-end gap-3 md:flex">
+            <ThemeToggle />
+            <Button variant="dark" size="sm" asChild>
               <Link to="/contact">Log In</Link>
             </Button>
             <Button size="sm" asChild>
@@ -85,13 +76,17 @@ export function Navbar() {
             </Button>
           </div>
 
-          <button
-            onClick={() => setOpen((v) => !v)}
-            className="text-foreground inline-flex size-10 items-center justify-center rounded-full border border-border/60 md:hidden"
-            aria-label="Toggle menu"
-          >
-            {open ? <X className="size-5" /> : <Menu className="size-5" />}
-          </button>
+          <div className="col-start-3 flex items-center justify-self-end gap-2 md:hidden">
+            <ThemeToggle />
+            <button
+              type="button"
+              onClick={() => setOpen((v) => !v)}
+              className="text-foreground inline-flex size-10 shrink-0 items-center justify-center rounded-full border border-border/60"
+              aria-label="Toggle menu"
+            >
+              {open ? <X className="size-5" /> : <Menu className="size-5" />}
+            </button>
+          </div>
         </nav>
 
         <AnimatePresence>
@@ -123,7 +118,7 @@ export function Navbar() {
                   </NavLink>
                 ))}
                 <div className="mt-3 flex gap-3">
-                  <Button variant="outline" size="sm" className="flex-1" asChild>
+                  <Button variant="dark" size="sm" className="flex-1" asChild>
                     <Link to="/contact" onClick={() => setOpen(false)}>
                       Log In
                     </Link>

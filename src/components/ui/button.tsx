@@ -5,14 +5,15 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg]:size-4 outline-none focus-visible:ring-2 focus-visible:ring-ring/50",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg]:size-4 outline-none focus-visible:ring-2 focus-visible:ring-ring/50",
   {
     variants: {
       variant: {
         default:
-          "bg-button-brand text-primary-foreground shadow-[0_0_0_1px_rgba(255,255,255,0.06)_inset,0_4px_14px_-4px_var(--brand-primary),0_0_32px_-6px_var(--brand-primary)] hover:brightness-110 hover:shadow-[0_0_0_1px_rgba(255,255,255,0.08)_inset,0_6px_18px_-4px_var(--brand-primary),0_0_44px_-6px_var(--brand-primary)] active:brightness-95",
+          "bg-button-brand text-primary-foreground shadow-[0_0_0_1px_rgba(255,255,255,0.06)_inset,0_2px_8px_-2px_rgba(0,0,0,0.35)] hover:brightness-110 active:brightness-95",
         outline:
           "border border-border bg-transparent text-foreground hover:bg-accent hover:border-white/20",
+        dark: "border border-white/10 bg-neutral-900 text-white shadow-[0_2px_10px_-4px_rgba(0,0,0,0.6)] hover:bg-neutral-800 hover:border-white/20",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
         secondary:
