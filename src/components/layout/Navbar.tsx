@@ -9,38 +9,29 @@ import { ThemeToggle } from "@/components/ThemeToggle"
 import { cn } from "@/lib/utils"
 
 const navLinks = [
-  { label: "Product", to: "/" },
-  { label: "Solutions", to: "/solutions" },
+  { label: "Product", to: "/product" },
   { label: "Features", to: "/features" },
+  { label: "Solutions", to: "/solutions" },
+  { label: "Support", to: "/support" },
   { label: "Pricing", to: "/pricing" },
   { label: "Contact", to: "/contact" },
 ]
 
 export function Navbar() {
-  const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24)
-    onScroll()
-    window.addEventListener("scroll", onScroll, { passive: true })
-    return () => window.removeEventListener("scroll", onScroll)
-  }, [])
 
   return (
     <header className="sticky top-0 z-50 w-full">
       <div
         className={cn(
           "mx-auto transition-[max-width,padding] duration-400 ease-out",
-          scrolled ? "max-w-4xl px-3 pt-3 sm:px-4" : "max-w-7xl px-5 pt-0 sm:px-8"
+          // scrolled ? "max-w-4xl px-3 pt-3 sm:px-4" : "max-w-7xl px-5 pt-0 sm:px-8"
         )}
       >
         <nav
           className={cn(
             "mx-auto grid grid-cols-[auto_1fr_auto] items-center transition-[height,border-radius,background-color,box-shadow,border-color,backdrop-filter] duration-400 ease-out md:grid-cols-[1fr_auto_1fr]",
-            scrolled
-              ? "h-14 rounded-full border border-border/60 bg-background/80 px-4 shadow-[0_16px_40px_-16px_rgba(0,0,0,0.65)] backdrop-blur-xl sm:px-5"
-              : "h-16 rounded-full border border-transparent bg-transparent px-0"
+            "h-14 rounded-full border border-border/60 bg-background/80 px-4 shadow-[0_16px_40px_-16px_rgba(0,0,0,0.65)] backdrop-blur-xl sm:px-5"
           )}
         >
           <Logo />

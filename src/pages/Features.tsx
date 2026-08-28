@@ -150,6 +150,7 @@ export function Features() {
             <MediaPlaceholder
               label="Image Placeholder"
               imageKeywords="technology,abstract"
+              videoSrc="/videos/viqubed_presentation_egn.mp4"
             />
           </Reveal>
         </div>
