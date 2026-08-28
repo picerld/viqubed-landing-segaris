@@ -1,9 +1,20 @@
+import { lazy, Suspense } from "react";
+
 import { Reveal } from "@/components/Reveal";
 import { CtaSection } from "@/components/CtaSection";
 import { SolutionCard } from "@/components/SolutionCard";
 import { solutions } from "@/data/solutions";
 import { GlowOrbs } from "@/components/GlowOrbs";
-import { MediaPlaceholder } from "@/components/MediaPlaceholder";
+
+// Model files only ever come from src/assets/models — no runtime upload.
+// Place your .glb there and import it like this (the `?url` suffix tells
+// Vite to give back a static asset URL instead of trying to parse it).
+import wulingAirPinkModel from "@/assets/models/Wuling_Air_Pink.glb?url";
+
+// Dynamic import — Vite splits this (and its three.js / @react-three/*
+// dependencies) into its own chunk, fetched only when this component is
+// about to render, instead of shipping on every page's main bundle.
+const Interactive3DHero = lazy(() => import("@/components/Interactive3DHero"));
 
 export function Solutions() {
   return (
@@ -32,10 +43,16 @@ export function Solutions() {
           </Reveal>
 
           <Reveal delay={0.1} className="mt-14">
-            <MediaPlaceholder
-              label="360° INTERACTIVE 3D PRODUCT SOLUTION CANVAS PLACEHOLDER"
-              imageKeywords="technology,abstract"
-            />
+            <Suspense
+              fallback={
+                <div className="border-border/60 bg-card/40 aspect-video w-full animate-pulse rounded-2xl border" />
+              }
+            >
+              <Interactive3DHero
+                modelUrl={wulingAirPinkModel}
+                label="360° INTERACTIVE 3D PRODUCT SOLUTION CANVAS — DRAG TO ROTATE"
+              />
+            </Suspense>
           </Reveal>
         </div>
       </section>
