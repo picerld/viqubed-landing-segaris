@@ -7,15 +7,17 @@ import { SolutionDetail } from "@/pages/SolutionDetail"
 import { Features } from "@/pages/Features"
 import { Pricing } from "@/pages/Pricing"
 import { Contact } from "@/pages/Contact"
+import Product from "@/pages/Product"
 
 function App() {
   return (
     <Routes>
       <Route element={<RootLayout />}>
-        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/product" element={<Product />} />
+        <Route path="/features" element={<Features />} />
         <Route path="/solutions" element={<Solutions />} />
         <Route path="/solutions/:slug" element={<SolutionDetail />} />
-        <Route path="/features" element={<Features />} />
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/contact" element={<Contact />} />
       </Route>

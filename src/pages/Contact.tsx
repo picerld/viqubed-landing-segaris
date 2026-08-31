@@ -257,27 +257,6 @@ export function Contact() {
           </div>
         </Reveal>
       </section>
-
-      {/* FAQ */}
-      <section className="mx-auto max-w-3xl px-5 pb-20 sm:px-8">
-        <Reveal>
-          <Accordion
-            type="single"
-            collapsible
-            defaultValue="item-0"
-            className="border-border/60 bg-card/40 rounded-2xl border px-6"
-          >
-            {faqs.map((faq, i) => (
-              <AccordionItem key={faq.question} value={`item-${i}`}>
-                <AccordionTrigger>{faq.question}</AccordionTrigger>
-                <AccordionContent>{faq.answer}</AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </Reveal>
-      </section>
-
-      <CtaSection />
     </>
   );
 }
