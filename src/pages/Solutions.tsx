@@ -9,7 +9,7 @@ import { GlowOrbs } from "@/components/GlowOrbs";
 // Model files only ever come from src/assets/models — no runtime upload.
 // Place your .glb there and import it like this (the `?url` suffix tells
 // Vite to give back a static asset URL instead of trying to parse it).
-import wulingAirPinkModel from "@/assets/models/Wuling_Air_Pink.glb?url";
+import valve from "@/assets/models/VALVE.glb";
 
 // Dynamic import — Vite splits this (and its three.js / @react-three/*
 // dependencies) into its own chunk, fetched only when this component is
@@ -49,7 +49,7 @@ export function Solutions() {
               }
             >
               <Interactive3DHero
-                modelUrl={wulingAirPinkModel}
+                modelUrl={valve}
                 label="360° INTERACTIVE 3D PRODUCT SOLUTION CANVAS — DRAG TO ROTATE"
               />
             </Suspense>
