@@ -36,10 +36,6 @@ export function Home() {
         <GlowOrbs />
         <div className="mx-auto max-w-5xl px-5 pt-16 pb-10 text-center sm:px-8 sm:pt-24">
           <Reveal>
-            <Badge variant="subtle" className="mx-auto">
-              <Sparkles className="size-3.5" />
-              No-Code Interactive 3D Platform
-            </Badge>
             <h1 className="text-foreground mx-auto mt-6 max-w-3xl text-4xl font-bold tracking-tight text-balance sm:text-6xl">
               Bring your 3D model to life vision —{" "}
               <span className="text-gradient-brand">
@@ -96,7 +92,7 @@ export function Home() {
       {/* Key features */}
       <section className="mx-auto max-w-4xl px-5 py-16 text-center sm:px-8">
         <Reveal>
-          <span className="text-primary text-xs font-semibold tracking-[0.2em] uppercase">
+          <span className="text-brand-primary brightness-125 text-xs font-semibold tracking-[0.2em] uppercase">
             Key Features
           </span>
           <h2 className="text-foreground mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
@@ -115,7 +111,7 @@ export function Home() {
                 key={label}
                 className="border-border/60 bg-card/50 text-foreground flex items-center gap-3 rounded-xl border px-10 py-5 text-sm font-medium transition-colors hover:border-primary/50 hover:bg-primary/10"
               >
-                <Icon className="text-primary size-5" />
+                <Icon className="text-brand-primary brightness-125 size-5" />
                 {label}
               </span>
             ))}
