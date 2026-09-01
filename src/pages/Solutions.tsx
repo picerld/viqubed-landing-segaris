@@ -1,20 +1,20 @@
-import { lazy, Suspense } from "react";
+import { Suspense } from "react";
 
-import { Reveal } from "@/components/Reveal";
-import { CtaSection } from "@/components/CtaSection";
-import { SolutionCard } from "@/components/SolutionCard";
-import { solutions } from "@/data/solutions";
-import { GlowOrbs } from "@/components/GlowOrbs";
 
 // Model files only ever come from src/assets/models — no runtime upload.
 // Place your .glb there and import it like this (the `?url` suffix tells
 // Vite to give back a static asset URL instead of trying to parse it).
-import valve from "@/assets/models/VALVE.glb";
+import valve from "../assets/models/VALVE.glb";
+import { GlowOrbs } from "../components/GlowOrbs";
+import { Reveal } from "../components/Reveal";
+import { SolutionCard } from "../components/SolutionCard";
+import { CtaSection } from "../components/CtaSection";
+import Interactive3DHero from "../components/Interactive3DHero";
+import { solutions } from "../data/solutions";
 
 // Dynamic import — Vite splits this (and its three.js / @react-three/*
 // dependencies) into its own chunk, fetched only when this component is
 // about to render, instead of shipping on every page's main bundle.
-const Interactive3DHero = lazy(() => import("@/components/Interactive3DHero"));
 
 export function Solutions() {
   return (

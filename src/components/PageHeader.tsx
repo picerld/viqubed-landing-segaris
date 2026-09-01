@@ -1,8 +1,8 @@
 import type { ReactNode } from "react"
 
-import { Reveal } from "@/components/Reveal"
-import { GlowOrbs } from "@/components/GlowOrbs"
-import { cn } from "@/lib/utils"
+import { Reveal } from "../components/Reveal"
+import { GlowOrbs } from "../components/GlowOrbs"
+import { cn } from "../lib/utils"
 
 export function PageHeader({
   eyebrow,

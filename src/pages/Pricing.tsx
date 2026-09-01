@@ -1,15 +1,14 @@
 import { Link } from "react-router-dom";
 import { Check, Minus } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { PageHeader } from "@/components/PageHeader";
-import { Reveal } from "@/components/Reveal";
-import { CtaSection } from "@/components/CtaSection";
-import { Spotlight } from "@/components/Spotlight";
-import { cn } from "@/lib/utils";
-import { plans, compareGroups, compareColumns } from "@/data/pricing";
-import { GlowOrbs } from "@/components/GlowOrbs";
+import { Button } from "../components/ui/button";
+import { Badge } from "../components/ui/badge";
+import { Reveal } from "../components/Reveal";
+import { CtaSection } from "../components/CtaSection";
+import { Spotlight } from "../components/Spotlight";
+import { cn } from "../lib/utils";
+import { plans, compareGroups, compareColumns } from "../data/pricing";
+import { GlowOrbs } from "../components/GlowOrbs";
 
 export function Pricing() {
   return (

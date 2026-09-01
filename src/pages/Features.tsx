@@ -1,11 +1,10 @@
-import { PageHeader } from "@/components/PageHeader";
-import { Reveal } from "@/components/Reveal";
-import { CtaSection } from "@/components/CtaSection";
-import { Spotlight } from "@/components/Spotlight";
-import { useTopicImage } from "@/lib/useTopicImage";
-import { cn } from "@/lib/utils";
-import { GlowOrbs } from "@/components/GlowOrbs";
-import { MediaPlaceholder } from "@/components/MediaPlaceholder";
+import { Reveal } from "../components/Reveal";
+import { CtaSection } from "../components/CtaSection";
+import { Spotlight } from "../components/Spotlight";
+import { useTopicImage } from "../lib/useTopicImage";
+import { cn } from "../lib/utils";
+import { GlowOrbs } from "../components/GlowOrbs";
+import { MediaPlaceholder } from "../components/MediaPlaceholder";
 
 const bentoFeatures = [
   {
@@ -150,7 +149,7 @@ export function Features() {
             <MediaPlaceholder
               label="Image Placeholder"
               imageKeywords="technology,abstract"
-              videoSrc="/videos/viqubed_presentation_egn.mp4"
+              videoSrc="src/assets/videos/viqubed_presentation_egn.mp4"
             />
           </Reveal>
         </div>

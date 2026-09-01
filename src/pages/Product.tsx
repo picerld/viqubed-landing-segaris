@@ -1,7 +1,7 @@
-import { MediaPlaceholder } from "@/components/MediaPlaceholder";
-import { Reveal } from "@/components/Reveal";
-import { CtaSection } from "@/components/CtaSection";
-import { GlowOrbs } from "@/components/GlowOrbs";
+import { MediaPlaceholder } from "../components/MediaPlaceholder";
+import { Reveal } from "../components/Reveal";
+import { CtaSection } from "../components/CtaSection";
+import { GlowOrbs } from "../components/GlowOrbs";
 
 export function Product() {
   return (
@@ -52,7 +52,7 @@ export function Product() {
             <MediaPlaceholder
               label="Hero Image / Video Presentation"
               imageKeywords="technology,abstract"
-              videoSrc="/videos/viqubed_presentation.mp4"
+              videoSrc="src/assets/videos/viqubed_presentation.mp4"
             />
           </Reveal>
         </div>

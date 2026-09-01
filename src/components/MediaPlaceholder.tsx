@@ -1,6 +1,6 @@
-import { useTopicImage } from "@/lib/useTopicImage";
-import { Spotlight } from "@/components/Spotlight";
-import { cn } from "@/lib/utils";
+import { useTopicImage } from "../lib/useTopicImage";
+import { Spotlight } from "../components/Spotlight";
+import { cn } from "../lib/utils";
 
 export function MediaPlaceholder({
   label,
@@ -30,8 +30,7 @@ export function MediaPlaceholder({
     return (
       <div
         className={cn(
-          "relative w-full overflow-hidden rounded-2xl border border-border/60",
-          aspect,
+          "relative mx-auto aspect-[1216/684] w-full overflow-hidden rounded-[20px] border border-border/60",
           className,
         )}
       >
@@ -89,11 +88,7 @@ export function MediaPlaceholder({
       />
 
       <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 px-6">
-        <span
-          className={cn(
-            "bg-primary flex size-16 items-center justify-center rounded-2xl shadow-[0_8px_30px_-8px_var(--brand-primary)]",
-          )}
-        >
+        <span className="bg-primary flex size-16 items-center justify-center rounded-2xl shadow-[0_8px_30px_-8px_var(--brand-primary)]">
           <span className="size-3 rounded-full bg-white" />
         </span>
 

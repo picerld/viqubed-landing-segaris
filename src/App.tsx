@@ -1,13 +1,14 @@
 import { Route, Routes } from "react-router-dom"
+import { RootLayout } from "./components/layout/RootLayout"
+import { Home } from "./pages/Home"
+import Product from "./pages/Product"
+import { Features } from "./pages/Features"
+import { Solutions } from "./pages/Solutions"
+import { SolutionDetail } from "./pages/SolutionDetail"
+import { Pricing } from "./pages/Pricing"
+import { Contact } from "./pages/Contact"
 
-import { RootLayout } from "@/components/layout/RootLayout"
-import { Home } from "@/pages/Home"
-import { Solutions } from "@/pages/Solutions"
-import { SolutionDetail } from "@/pages/SolutionDetail"
-import { Features } from "@/pages/Features"
-import { Pricing } from "@/pages/Pricing"
-import { Contact } from "@/pages/Contact"
-import Product from "@/pages/Product"
+
 
 function App() {
   return (

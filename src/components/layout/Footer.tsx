@@ -2,15 +2,15 @@ import { useState, type FormEvent } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Check } from "lucide-react";
 
-import { Logo } from "@/components/layout/Logo";
+import { Logo } from "../../components/layout/Logo";
 import {
   LinkedinIcon,
   YoutubeIcon,
   InstagramIcon,
-} from "@/components/icons/SocialIcons";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { VideoPopup } from "@/components/videoPopup";
+} from "../../components/icons/SocialIcons";
+import { Input } from "../../components/ui/input";
+import { Button } from "../../components/ui/button";
+import { VideoPopup } from "../../components/videoPopup";
 
 const footerColumns = [
   {

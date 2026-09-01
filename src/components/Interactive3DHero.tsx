@@ -5,8 +5,8 @@ import { EffectComposer, Outline } from "@react-three/postprocessing"
 import { Boxes, Move3d, Package, RotateCw, X } from "lucide-react"
 import * as THREE from "three"
 
-import { Spotlight } from "@/components/Spotlight"
-import { cn } from "@/lib/utils"
+import { Spotlight } from "../components/Spotlight"
+import { cn } from "../lib/utils"
 
 /**
  * Draggable 3D hero that renders a .glb model (via three.js /

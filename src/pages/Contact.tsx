@@ -2,28 +2,20 @@ import { useState, type FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MapPin, Mail, Phone, Send, CheckCircle2, Loader2 } from "lucide-react";
 
-import { PageHeader } from "@/components/PageHeader";
 import {
   FacebookIcon,
   LinkedinIcon,
   YoutubeIcon,
-} from "@/components/icons/SocialIcons";
-import { Reveal } from "@/components/Reveal";
-import { CtaSection } from "@/components/CtaSection";
-import { Spotlight } from "@/components/Spotlight";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import { Checkbox } from "@/components/ui/checkbox";
-import {
-  Accordion,
-  AccordionItem,
-  AccordionTrigger,
-  AccordionContent,
-} from "@/components/ui/accordion";
-import { faqs } from "@/data/faq";
-import { GlowOrbs } from "@/components/GlowOrbs";
+} from "../components/icons/SocialIcons";
+import { GlowOrbs } from "../components/GlowOrbs";
+import { Reveal } from "../components/Reveal";
+import { Spotlight } from "../components/Spotlight";
+import { Label } from "../components/ui/label";
+import { Input } from "../components/ui/input";
+import { Textarea } from "../components/ui/textarea";
+import { Checkbox } from "../components/ui/checkbox";
+import { Button } from "../components/ui/button";
+
 
 const contactInfo = [
   {

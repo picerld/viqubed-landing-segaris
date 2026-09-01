@@ -1,10 +1,10 @@
 import { Link, Navigate, useParams } from "react-router-dom"
 import { ArrowLeft } from "lucide-react"
 
-import { MediaPlaceholder } from "@/components/MediaPlaceholder"
-import { Reveal } from "@/components/Reveal"
-import { CtaSection } from "@/components/CtaSection"
-import { getSolutionBySlug } from "@/data/solutions"
+import { MediaPlaceholder } from "../components/MediaPlaceholder"
+import { Reveal } from "../components/Reveal"
+import { CtaSection } from "../components/CtaSection"
+import { getSolutionBySlug } from "../data/solutions"
 
 export function SolutionDetail() {
   const { slug } = useParams()
@@ -28,7 +28,7 @@ export function SolutionDetail() {
         <Reveal>
           <MediaPlaceholder
             label="Hero Image / Video Presentation"
-            imageKeywords={solution.imageKeywords}
+            imageKeywords={solution.imgurl}
           />
         </Reveal>
 

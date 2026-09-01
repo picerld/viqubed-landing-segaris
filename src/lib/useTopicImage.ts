@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-import { topicImage } from "@/lib/images"
+import { topicImage } from "../lib/images"
 
 /**
  * Loads a topic photo with a few silent retries (different lock/photo per

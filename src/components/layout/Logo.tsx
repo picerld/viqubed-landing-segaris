@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 
-import logoUrl from "@/assets/Logo-dark.svg";
-import logoBlackUrl from "@/assets/Logo-white.svg";
-import { useTheme } from "@/lib/theme";
+import logoUrl from "../../assets/Logo-dark.svg";
+import logoBlackUrl from "../../assets/Logo-white.svg";
+import { useTheme } from "../../lib/theme";
 
 export function Logo() {
   const { theme } = useTheme();

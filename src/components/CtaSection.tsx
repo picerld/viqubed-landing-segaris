@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom"
 import { ArrowRight } from "lucide-react"
 
-import { Button } from "@/components/ui/button"
-import { Reveal } from "@/components/Reveal"
+import { Button } from "../components/ui/button"
+import { Reveal } from "../components/Reveal"
 
 export function CtaSection() {
   return (

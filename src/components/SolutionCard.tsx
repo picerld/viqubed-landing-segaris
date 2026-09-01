@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 
-import type { Solution } from "@/data/solutions";
-import { useTopicImage } from "@/lib/useTopicImage";
-import { Spotlight } from "@/components/Spotlight";
-import { cn } from "@/lib/utils";
+import type { Solution } from "../data/solutions";
+import { Spotlight } from "../components/Spotlight";
+import { cn } from "../lib/utils";
 
 export function SolutionCard({
   solution,
@@ -26,8 +25,8 @@ export function SolutionCard({
     >
       <div
         className={cn(
-          "relative overflow-hidden bg-gradient-to-br",
-          solution.gradient,
+          "relative overflow-hidden",
+          // solution.gradient,
           compact ? "h-56" : "h-50",
         )}
       >
@@ -37,7 +36,7 @@ export function SolutionCard({
             alt=""
             loading="lazy"
             className={cn(
-              "absolute inset-0 h-full w-full object-cover transition-[opacity,transform] duration-500 ease-out group-hover:scale-105 transition-all opacity-100",
+              "absolute inset-0 h-full w-full object-cover opacity-70 grayscale transition-all duration-500 ease-out group-hover:scale-[1.02] group-hover:opacity-100 group-hover:grayscale-0",
             )}
           />
         )}

@@ -8,6 +8,15 @@ export interface Solution {
   gradient: string
   imgurl: string
 }
+import automotiveImg from "../assets/img/Arsitektur.png";
+import aviationImg from "../assets/img/Aviation.png";
+import medicalImg from "../assets/img/Human_Body.png";
+import engineeringImg from "../assets/img/Bearing.png";
+import industrialImg from "../assets/img/CFM.png";
+import electricalImg from "../assets/img/Piston.png";
+import productDesignImg from "../assets/img/Skeletal.png";
+import presentationImg from "../assets/img/Transportation.png";
+import advertorialImg from "../assets/img/Compact_Prover.png";
 
 export const solutions: Solution[] = [
   {
@@ -20,7 +29,7 @@ export const solutions: Solution[] = [
     overview:
       "The automotive industry is a major industrial sector that requires a significant amount of technical understanding and expertise in the engineering of vehicles — from assembly and testing to maintenance handling. This requires skilled professionals with expertise in areas such as vehicle chassis, engines, electrical control systems, and transmission mechanics.",
     gradient: "from-blue-500 via-indigo-500 to-violet-600",
-    imgurl: "/img/Arsitektur.png",
+    imgurl: automotiveImg,
   },
   {
     slug: "aviation",
@@ -32,7 +41,7 @@ export const solutions: Solution[] = [
     overview:
       "Aviation maintenance and engineering demand precise, repeatable training on systems that are too costly or dangerous to practice on directly. Interactive 3D breakdowns let trainees rotate, disassemble, and inspect airframes, engines, and avionics bays without grounding a single aircraft.",
     gradient: "from-sky-500 via-blue-500 to-indigo-600",
-    imgurl: "/img/Aviation.png",
+    imgurl: aviationImg,
   },
   {
     slug: "medical",
@@ -44,7 +53,7 @@ export const solutions: Solution[] = [
     overview:
       "Static diagrams struggle to convey depth, layering, and spatial relationships in the human body. VIQUBED turns flat illustrations into fully rotatable, dissectible anatomical models with clinical hotspots students can explore at their own pace.",
     gradient: "from-rose-500 via-pink-500 to-red-600",
-    imgurl: "/img/Human_Body.png",
+    imgurl: medicalImg,
   },
   {
     slug: "engineering",
@@ -56,7 +65,7 @@ export const solutions: Solution[] = [
     overview:
       "Engineering teams lose time onboarding new hires onto heavyweight CAD tools. By publishing pre-built interactive models with exploded views and guided assembly steps, VIQUBED shortens the path from CAD file to shared understanding.",
     gradient: "from-cyan-500 via-teal-500 to-emerald-600",
-    imgurl: "/img/Bearing.png",
+    imgurl: engineeringImg,
   },
   {
     slug: "industrial",
@@ -68,7 +77,7 @@ export const solutions: Solution[] = [
     overview:
       "Factory floors are high-stakes environments where training mistakes are costly. Browser-based digital twins let operators rehearse maintenance procedures and hazard responses safely, before ever touching the real machine.",
     gradient: "from-amber-500 via-orange-500 to-red-500",
-    imgurl: "/img/CFM.png",
+    imgurl: industrialImg,
   },
   {
     slug: "electrical",
@@ -80,7 +89,7 @@ export const solutions: Solution[] = [
     overview:
       "Electrical schematics are notoriously hard to translate into physical intuition. VIQUBED renders wiring harnesses and control panels as manipulable 3D assemblies, complete with guided fault-finding simulations for technician training.",
     gradient: "from-yellow-400 via-amber-500 to-orange-600",
-    imgurl: "/img/Piston.png",
+    imgurl: electricalImg,
   },
   {
     slug: "product-design",
@@ -92,7 +101,7 @@ export const solutions: Solution[] = [
     overview:
       "Design reviews often stall when non-technical stakeholders can't parse a CAD render. Publishing an interactive, annotated 3D model — with embedded audio walkthroughs and technical documentation — keeps design and business teams aligned.",
     gradient: "from-fuchsia-500 via-purple-500 to-indigo-600",
-    imgurl: "/img/Skeletal.png",
+    imgurl: productDesignImg,
   },
   {
     slug: "presentation",
@@ -104,7 +113,7 @@ export const solutions: Solution[] = [
     overview:
       "A flat slide deck can't compete with a product you can spin, open, and explore. VIQUBED lets sales teams embed interactive 3D centerpieces directly into presentations, paired with annotations and audio to guide the pitch.",
     gradient: "from-violet-500 via-purple-500 to-fuchsia-600",
-    imgurl: "/img/Transportation.png",
+    imgurl: presentationImg,
   },
   {
     slug: "advertorial",
@@ -116,7 +125,7 @@ export const solutions: Solution[] = [
     overview:
       "Static banner ads are easy to scroll past. Embedding a zero-install, interactive 3D model directly inside a native article gives readers a reason to stop, explore, and engage — driving measurably higher conversion.",
     gradient: "from-emerald-500 via-teal-500 to-cyan-600",
-    imgurl: "/img/Compact_Prover.png",
+    imgurl: advertorialImg,
   },
 ]
 

@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils"
+import { cn } from "../lib/utils"
 
 /**
  * Ambient bloom lighting behind hero content — soft, smoothly blended

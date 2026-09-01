@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import {
   ArrowRight,
   Play,
-  Sparkles,
   Type,
   Volume2,
   Video,
@@ -10,14 +9,13 @@ import {
   Box,
 } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { MediaPlaceholder } from "@/components/MediaPlaceholder";
-import { Reveal } from "@/components/Reveal";
-import { CtaSection } from "@/components/CtaSection";
-import { SolutionCard } from "@/components/SolutionCard";
-import { GlowOrbs } from "@/components/GlowOrbs";
-import { solutions } from "@/data/solutions";
+import { Button } from "../components/ui/button";
+import { MediaPlaceholder } from "../components/MediaPlaceholder";
+import { Reveal } from "../components/Reveal";
+import { CtaSection } from "../components/CtaSection";
+import { SolutionCard } from "../components/SolutionCard";
+import { GlowOrbs } from "../components/GlowOrbs";
+import { solutions } from "../data/solutions";
 import "animate.css";
 
 const keyFeatures = [
@@ -82,7 +80,7 @@ export function Home() {
               <MediaPlaceholder
                 label="Hero Image / Video Presentation"
                 imageKeywords="technology,abstract"
-                videoSrc="/videos/viqubed.mp4"
+                videoSrc="src/assets/videos/viqubed.mp4"
               />
             </Reveal>
           </div>
