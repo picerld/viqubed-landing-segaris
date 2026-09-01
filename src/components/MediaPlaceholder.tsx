@@ -1,6 +1,3 @@
-import { useState } from "react";
-import { Play } from "lucide-react";
-
 import { useTopicImage } from "@/lib/useTopicImage";
 import { Spotlight } from "@/components/Spotlight";
 import { cn } from "@/lib/utils";
@@ -18,8 +15,6 @@ export function MediaPlaceholder({
   imageKeywords?: string;
   videoSrc?: string;
 }) {
-  const [playing, setPlaying] = useState(false);
-
   const { src, loaded, failed, onLoad, onError } = useTopicImage(
     imageKeywords,
     {
@@ -30,8 +25,8 @@ export function MediaPlaceholder({
 
   const showImage = !!src;
 
-  // Tampilkan video ketika playing
-  if (playing && videoSrc) {
+  // Video langsung autoplay ketika videoSrc tersedia
+  if (videoSrc) {
     return (
       <div
         className={cn(
@@ -42,11 +37,12 @@ export function MediaPlaceholder({
       >
         <video
           src={videoSrc}
-          controls
           autoPlay
+          muted
+          loop
           playsInline
           className="absolute inset-0 h-full w-full object-cover"
-          preload="metadata"
+          preload="auto"
         />
       </div>
     );
@@ -54,9 +50,7 @@ export function MediaPlaceholder({
 
   return (
     <Spotlight
-      as="button"
-      type="button"
-      onClick={() => setPlaying((v) => !v)}
+      as="div"
       className={cn(
         "group border-border/60 relative w-full overflow-hidden rounded-2xl border text-left",
         showImage ? "border-solid" : "bg-glow bg-card/40 border-dashed",
@@ -67,7 +61,7 @@ export function MediaPlaceholder({
       {showImage && (
         <img
           src={src}
-          alt=""
+          alt={label}
           loading="lazy"
           onLoad={onLoad}
           onError={onError}
@@ -89,7 +83,7 @@ export function MediaPlaceholder({
         className={cn(
           "absolute inset-0",
           showImage
-            ? "bg-black/45 transition-colors duration-300 group-hover:bg-black/35"
+            ? "bg-black/45"
             : "bg-[radial-gradient(circle_at_50%_40%,rgba(255,255,255,0.06),transparent_60%)]",
         )}
       />
@@ -97,11 +91,10 @@ export function MediaPlaceholder({
       <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 px-6">
         <span
           className={cn(
-            "bg-primary flex size-16 items-center justify-center rounded-2xl shadow-[0_8px_30px_-8px_var(--brand-primary)] transition-all duration-300 group-hover:scale-110",
-            playing && "scale-90 animate-pulse",
+            "bg-primary flex size-16 items-center justify-center rounded-2xl shadow-[0_8px_30px_-8px_var(--brand-primary)]",
           )}
         >
-          <Play className="ml-1 size-6 fill-white text-white" />
+          <span className="size-3 rounded-full bg-white" />
         </span>
 
         <span
@@ -110,12 +103,12 @@ export function MediaPlaceholder({
             showImage ? "text-white/90" : "text-muted-foreground",
           )}
         >
-          {/* {playing ? "Playing preview…" : label} */}
+          {label}
         </span>
 
         {!showImage && failed && (
           <span className="text-muted-foreground/70 text-center text-[11px]">
-            Preview unavailable — tap to try again
+            Preview unavailable
           </span>
         )}
       </div>

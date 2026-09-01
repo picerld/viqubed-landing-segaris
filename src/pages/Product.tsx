@@ -3,7 +3,6 @@ import { Reveal } from "@/components/Reveal";
 import { CtaSection } from "@/components/CtaSection";
 import { GlowOrbs } from "@/components/GlowOrbs";
 
-
 export function Product() {
   return (
     <>
@@ -17,16 +16,14 @@ export function Product() {
               No-Code Interactive 3D Platform
             </Badge> */}
             <h1 className="text-foreground mx-auto mt-6 max-w-3xl text-4xl font-bold tracking-tight text-balance sm:text-6xl">
-              Bring your 3D model to life vision —{" "}
-              <span className="text-gradient-brand">
-                Without Writing a Single Line of Code
-              </span>
+              Build, Share, and{" "}
+              <span className="text-gradient-brand">Inspire Together</span>
             </h1>
             <p className="text-muted-foreground mx-auto mt-6 max-w-4xl text-balance">
-              An online web-based platform for crafting 3D interactive content
-              more easily, designed for deep learning experience — from
-              classroom learning and training to product knowledge explainer,
-              and share it via a single link.
+              Empower your students, team, or community with immersive 3D
+              content that transforms abstract ideas into tangible reality.
+              Shape the future of learning and collaboration, one interactive
+              experience at a time.
             </p>
             {/* <p className="text-foreground mx-auto mt-3 max-w-xl font-medium text-balance">
               Build and share your valuable knowledge to your team and to the
@@ -62,28 +59,6 @@ export function Product() {
       </section>
 
       {/* Studio interface */}
-      <section className="mx-auto max-w-5xl px-5 py-20 text-center sm:px-8">
-        <Reveal>
-          {/* <span className="text-primary text-xs font-semibold tracking-[0.2em] uppercase">
-            Studio Interface
-          </span> */}
-          <h2 className="text-foreground mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
-            Build, Share, and Inspire Together
-          </h2>
-          <p className="text-muted-foreground mx-auto mt-4 max-w-4xl text-balance">
-            Empower your students, team, or community with immersive 3D content
-            that transforms abstract ideas into tangible reality. Shape the
-            future of learning and collaboration, one interactive experience at
-            a time.
-          </p>
-        </Reveal>
-        <Reveal delay={0.1} className="mt-10">
-          <MediaPlaceholder
-            label="Studio Editor UI Showcase"
-            imageKeywords="software,computer"
-          />
-        </Reveal>
-      </section>
 
       {/* Gamified learning */}
       <section className="mx-auto max-w-5xl px-5 py-20 text-center sm:px-8">

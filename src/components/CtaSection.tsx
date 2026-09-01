@@ -19,10 +19,10 @@ export function CtaSection() {
               frameworks tailored to your organization, empowering you to
               unlock maximum impact and performance.
             </p>
-            <p className="text-muted-foreground mx-auto mt-3 max-w-4xl text-balance">
+            {/* <p className="text-muted-foreground mx-auto mt-3 max-w-4xl text-balance">
               Create an active and stimulating learning environment by making
               it more engaging and rewarding.
-            </p>
+            </p> */}
             <Button size="lg" className="mt-8" asChild>
               <Link to="/contact">
                 Contact Us

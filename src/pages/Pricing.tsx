@@ -123,15 +123,17 @@ export function Pricing() {
         </Reveal>
 
         <Reveal delay={0.1} className="mt-10 overflow-x-auto">
-          <div className="border-border/60 min-w-[720px] overflow-hidden rounded-2xl border">
+          <div className="border-border/60 min-w-[720px] overflow-hidden rounded-2xl border-b bg-card/30 text-sm">
             <div className="bg-card/60 grid grid-cols-5 border-b border-border/60 px-6 py-4 text-xs font-semibold tracking-wide">
-              <span className="text-muted-foreground">Feature Overview</span>
+              <span className="text-foreground font-semibold">Feature Overview</span>
               {compareColumns.map((col, i) => (
                 <span
                   key={col}
                   className={cn(
                     "text-center",
-                    i === 2 ? "text-primary" : "text-foreground",
+                    i === 2
+                      ? "text-brand-primary brightness-125"
+                      : "text-foreground",
                   )}
                 >
                   {col}
@@ -141,27 +143,29 @@ export function Pricing() {
 
             {compareGroups.map((group) => (
               <div key={group.title}>
-                <div className="bg-primary/[0.06] text-primary px-6 py-2.5 text-[11px] font-semibold tracking-[0.14em] uppercase">
+                <div className="bg-white/[0.07] text-brand-primary brightness-125 px-6 py-2.5 text-[11px] font-semibold tracking-[0.14em] uppercase">
                   {group.title}
                 </div>
+
                 {group.rows.map((row) => (
                   <div
                     key={row.label}
-                    className="border-border/40 grid grid-cols-5 items-center border-b px-6 py-4 text-sm last:border-b-0"
+                    className="border-border/40 grid grid-cols-5 items-stretch border-b text-sm last:border-b-0"
                   >
-                    <span className="text-foreground/90 font-medium">
+                    <span className="text-foreground/90 flex items-center px-6 py-4 font-medium">
                       {row.label}
                     </span>
+
                     {row.values.map((value, i) => (
                       <span
                         key={i}
                         className={cn(
-                          "flex justify-center text-center",
-                          i === 2 && "bg-primary/[0.05]",
+                          "flex h-full items-center justify-center px-6 py-4 text-center",
+                          i === 2 && "bg-primary/[0.06]",
                         )}
                       >
                         {value === true ? (
-                          <Check className="text-primary size-4" />
+                          <Check className="text-brand-primary brightness-125 size-4" />
                         ) : value === "—" ? (
                           <Minus className="text-muted-foreground/50 size-4" />
                         ) : (
@@ -169,7 +173,7 @@ export function Pricing() {
                             className={cn(
                               "text-xs",
                               i === 2
-                                ? "text-primary font-medium"
+                                ? "text-brand-primary brightness-125 font-medium"
                                 : "text-muted-foreground",
                             )}
                           >

@@ -116,7 +116,7 @@ export function Contact() {
                   key={label}
                   className="border-border/60 bg-card/40 flex items-start gap-4 rounded-xl border p-4 transition-colors hover:border-primary/40"
                 >
-                  <span className="bg-primary/15 text-primary relative flex size-10 shrink-0 items-center justify-center rounded-full">
+                  <span className="bg-primary/15 text-brand-primary brightness-125 relative flex size-10 shrink-0 items-center justify-center rounded-full">
                     <Icon className="size-4" />
                   </span>
                   <div className="relative">

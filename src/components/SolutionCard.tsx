@@ -49,8 +49,8 @@ export function SolutionCard({
         <p className="text-muted-foreground mt-2 flex-1 text-sm leading-relaxed">
           {solution.shortDescription}
         </p>
-        <span className="text-primary my-6 inline-flex items-center gap-1.5 text-sm font-medium">
-          Learn More
+        <span className="text-brand-primary brightness-125 my-6 inline-flex items-center gap-1.5 text-sm font-medium ">
+          View Demo
           <ArrowRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-1" />
         </span>
       </div>
