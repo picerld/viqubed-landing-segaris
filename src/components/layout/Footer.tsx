@@ -32,19 +32,24 @@ const footerColumns = [
     ],
   },
   {
-    title: "Help",
+    title: "Support",
     links: [
-      { label: "Customer Support", to: "/contact" },
-      { label: "Delivery Details", to: "/contact" },
-      { label: "Terms & Conditions", to: "/" },
-      { label: "Privacy Policy", to: "/" },
+      { label: "Help Center", to: "/contact" },
+      { label: "Forum", to: "/contact" },
+      { label: "Release", to: "/" },
+      { label: "Tutorials", to: "/" },
+      { label: "News", to: "/" },
     ],
   },
 ];
 
 const socials = [
   { icon: LinkedinIcon, href: "#", label: "LinkedIn" },
-  { icon: YoutubeIcon, href: "#https://www.youtube.com/watch?v=trXFHkaT2w4&t=571s", label: "YouTube" },
+  {
+    icon: YoutubeIcon,
+    href: "#https://www.youtube.com/watch?v=trXFHkaT2w4&t=571s",
+    label: "YouTube",
+  },
   { icon: InstagramIcon, href: "#", label: "Instagram" },
 ];
 
@@ -66,7 +71,7 @@ export function Footer() {
   return (
     <footer className="border-border/60 border-t">
       <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8">
-        <div className="grid grid-cols-2 gap-x-6 gap-y-12 md:grid-cols-5">
+        <div className="grid grid-cols-2 gap-x-6 gap-y-12 md:grid-cols-[1.2fr_0.7fr_0.7fr_0.7fr_1.2fr]">
           {/* Logo + Social */}
           <div className="col-span-2 md:col-span-1">
             <Logo />
@@ -108,7 +113,7 @@ export function Footer() {
 
           {/* Footer Columns */}
           {footerColumns.map((col) => (
-            <div key={col.title}>
+            <div key={col.title} className="justify-self-start">
               <h3 className="text-foreground text-sm font-semibold">
                 {col.title}
               </h3>

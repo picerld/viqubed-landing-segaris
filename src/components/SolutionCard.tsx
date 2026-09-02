@@ -21,7 +21,7 @@ export function SolutionCard({
     <Spotlight
       as={Link}
       to={`/solutions/${solution.slug}`}
-      className="group border-border/60 bg-card/40 flex h-full flex-col overflow-hidden rounded-2xl border transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-[0_20px_50px_-25px_var(--brand-primary)]"
+      className="group border-border/60 bg-card/40 flex h-full flex-col overflow-hidden rounded-2xl border transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-[0_20px_30px_-30px_var(--brand-primary)]"
     >
       <div
         className={cn(
@@ -36,7 +36,7 @@ export function SolutionCard({
             alt=""
             loading="lazy"
             className={cn(
-              "absolute inset-0 h-full w-full object-cover opacity-70 grayscale transition-all duration-500 ease-out group-hover:scale-[1.02] group-hover:opacity-100 group-hover:grayscale-0",
+              "absolute inset-0 h-full w-full object-cover opacity-100 grayscale transition-all duration-500 ease-out group-hover:scale-[1.02] group-hover:opacity-100 group-hover:grayscale-0",
             )}
           />
         )}

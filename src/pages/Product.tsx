@@ -2,6 +2,7 @@ import { MediaPlaceholder } from "../components/MediaPlaceholder";
 import { Reveal } from "../components/Reveal";
 import { CtaSection } from "../components/CtaSection";
 import { GlowOrbs } from "../components/GlowOrbs";
+import videoProduct from "../assets/videos/viqubed_presentation.mp4";
 
 export function Product() {
   return (
@@ -52,7 +53,7 @@ export function Product() {
             <MediaPlaceholder
               label="Hero Image / Video Presentation"
               imageKeywords="technology,abstract"
-              videoSrc="src/assets/videos/viqubed_presentation.mp4"
+              videoSrc={videoProduct}
             />
           </Reveal>
         </div>
@@ -75,7 +76,7 @@ export function Product() {
         <Reveal delay={0.1} className="mt-10">
           <MediaPlaceholder
             label="Gamified Learning Showcase"
-            imageKeywords="classroom,technology"
+            imageKeywords="technology,abstract"
           />
         </Reveal>
       </section>

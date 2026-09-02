@@ -15,13 +15,24 @@ export function MediaPlaceholder({
   imageKeywords?: string;
   videoSrc?: string;
 }) {
-  const { src, loaded, failed, onLoad, onError } = useTopicImage(
-    imageKeywords,
-    {
-      width: 1280,
-      height: 720,
-    },
-  );
+  // Asset lokal seperti /src/assets/... atau hasil import Vite
+  const isLocalImage =
+    !!imageKeywords &&
+    (imageKeywords.startsWith("/") ||
+      imageKeywords.startsWith("data:") ||
+      imageKeywords.startsWith("blob:") ||
+      imageKeywords.includes("/assets/"));
+
+  const topicImage = useTopicImage(isLocalImage ? undefined : imageKeywords, {
+    width: 1280,
+    height: 720,
+  });
+
+  const src = isLocalImage ? imageKeywords : topicImage.src;
+  const loaded = isLocalImage ? true : topicImage.loaded;
+  const failed = isLocalImage ? false : topicImage.failed;
+  const onLoad = isLocalImage ? undefined : topicImage.onLoad;
+  const onError = isLocalImage ? undefined : topicImage.onError;
 
   const showImage = !!src;
 
@@ -51,7 +62,7 @@ export function MediaPlaceholder({
     <Spotlight
       as="div"
       className={cn(
-        "group border-border/60 relative w-full overflow-hidden rounded-2xl border text-left",
+        "group relative w-full overflow-hidden rounded-2xl border border-border/60 text-left",
         showImage ? "border-solid" : "bg-glow bg-card/40 border-dashed",
         aspect,
         className,
@@ -65,8 +76,8 @@ export function MediaPlaceholder({
           onLoad={onLoad}
           onError={onError}
           className={cn(
-            "absolute inset-0 h-full w-full object-cover transition-opacity duration-500",
-            loaded ? "opacity-100" : "opacity-0",
+            "absolute inset-0 h-full w-full object-cover transition-all duration-500",
+            loaded ? "opacity-100 group-hover:scale-[1.02]" : "opacity-0",
           )}
         />
       )}
@@ -88,7 +99,7 @@ export function MediaPlaceholder({
       />
 
       <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 px-6">
-        <span className="bg-primary flex size-16 items-center justify-center rounded-2xl shadow-[0_8px_30px_-8px_var(--brand-primary)]">
+        {/* <span className="bg-primary flex size-16 items-center justify-center rounded-2xl shadow-[0_8px_30px_-8px_var(--brand-primary)]">
           <span className="size-3 rounded-full bg-white" />
         </span>
 
@@ -99,7 +110,7 @@ export function MediaPlaceholder({
           )}
         >
           {label}
-        </span>
+        </span> */}
 
         {!showImage && failed && (
           <span className="text-muted-foreground/70 text-center text-[11px]">

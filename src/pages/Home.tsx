@@ -17,6 +17,7 @@ import { SolutionCard } from "../components/SolutionCard";
 import { GlowOrbs } from "../components/GlowOrbs";
 import { solutions } from "../data/solutions";
 import "animate.css";
+import videoHome from "../assets/videos/viqubed.mp4";
 
 const keyFeatures = [
   { icon: Type, label: "Text" },
@@ -80,7 +81,7 @@ export function Home() {
               <MediaPlaceholder
                 label="Hero Image / Video Presentation"
                 imageKeywords="technology,abstract"
-                videoSrc="src/assets/videos/viqubed.mp4"
+                videoSrc={videoHome}
               />
             </Reveal>
           </div>

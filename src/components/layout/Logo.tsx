@@ -16,7 +16,7 @@ export function Logo() {
       <img
         src={theme === "dark" ? logoUrl : logoBlackUrl}
         alt="VIQUBED — Immersive 3D Content Composer"
-        className="h-11 w-auto translate-y-[%] sm:h-7"
+        className="h-11 w-auto translate-y-[%] sm:h-8"
       />
     </Link>
   );

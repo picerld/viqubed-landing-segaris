@@ -1,20 +1,20 @@
-import { Link, Navigate, useParams } from "react-router-dom"
-import { ArrowLeft } from "lucide-react"
+import { Link, Navigate, useParams } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
 
-import { MediaPlaceholder } from "../components/MediaPlaceholder"
-import { Reveal } from "../components/Reveal"
-import { CtaSection } from "../components/CtaSection"
-import { getSolutionBySlug } from "../data/solutions"
+import { MediaPlaceholder } from "../components/MediaPlaceholder";
+import { Reveal } from "../components/Reveal";
+import { CtaSection } from "../components/CtaSection";
+import { getSolutionBySlug } from "../data/solutions";
 
 export function SolutionDetail() {
-  const { slug } = useParams()
-  const solution = getSolutionBySlug(slug)
+  const { slug } = useParams();
+  const solution = getSolutionBySlug(slug);
 
-  if (!solution) return <Navigate to="/solutions" replace />
+  if (!solution) return <Navigate to="/solutions" replace />;
 
   return (
     <>
-      <section className="mx-auto max-w-5xl px-5 pt-10 pb-6 sm:px-8">
+      <section className="mx-auto max-w-5xl px-5 pt-10 pb-6 sm:px-8 mt-20">
         <Link
           to="/solutions"
           className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1.5 text-sm font-medium transition-colors"
@@ -40,16 +40,14 @@ export function SolutionDetail() {
             {solution.overviewTitle}
           </h1>
           <p className="text-muted-foreground mt-5 max-w-2xl text-balance leading-relaxed">
-            Welcome! This interactive 3D {solution.title.replace(" Solution", "")}{" "}
-            simulation is designed to provide hands-on virtual experience,
-            dissecting complex components and systems without the need for
-            heavy physical equipment.
+            Welcome! This interactive 3D{" "}
+            {solution.title.replace(" Solution", "")} simulation is designed to
+            provide hands-on virtual experience, dissecting complex components
+            and systems without the need for heavy physical equipment.
           </p>
 
           <div className="border-border/60 mt-10 border-t pt-10">
-            <h2 className="text-foreground text-2xl font-semibold">
-              Overview
-            </h2>
+            <h2 className="text-foreground text-2xl font-semibold">Overview</h2>
             <p className="text-muted-foreground mt-4 max-w-2xl leading-relaxed">
               {solution.overview}
             </p>
@@ -59,5 +57,5 @@ export function SolutionDetail() {
 
       <CtaSection />
     </>
-  )
+  );
 }

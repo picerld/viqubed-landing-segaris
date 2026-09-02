@@ -5,6 +5,7 @@ import { useTopicImage } from "../lib/useTopicImage";
 import { cn } from "../lib/utils";
 import { GlowOrbs } from "../components/GlowOrbs";
 import { MediaPlaceholder } from "../components/MediaPlaceholder";
+import videoFeatures from "../assets/videos/viqubed_presentation_egn.mp4";
 
 const bentoFeatures = [
   {
@@ -149,7 +150,7 @@ export function Features() {
             <MediaPlaceholder
               label="Image Placeholder"
               imageKeywords="technology,abstract"
-              videoSrc="src/assets/videos/viqubed_presentation_egn.mp4"
+              videoSrc={videoFeatures}
             />
           </Reveal>
         </div>

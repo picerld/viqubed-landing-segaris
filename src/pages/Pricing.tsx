@@ -45,7 +45,7 @@ export function Pricing() {
                 className={cn(
                   "border-border/60 bg-card/40 relative flex h-full flex-col rounded-2xl border p-6 transition-all duration-300 hover:-translate-y-1",
                   plan.popular &&
-                    "border-primary/70 shadow-[0_20px_60px_-25px_var(--brand-primary)] ring-1 ring-primary/40",
+                    "border-primary/70 shadow-[0_20px_30px_-25px_var(--brand-primary)] ring-1 ring-primary/40",
                 )}
               >
                 {plan.popular && (
@@ -122,9 +122,12 @@ export function Pricing() {
         </Reveal>
 
         <Reveal delay={0.1} className="mt-10 overflow-x-auto">
-          <div className="border-border/60 min-w-[720px] overflow-hidden rounded-2xl border-b bg-card/30 text-sm">
-            <div className="bg-card/60 grid grid-cols-5 border-b border-border/60 px-6 py-4 text-xs font-semibold tracking-wide">
-              <span className="text-foreground font-semibold">Feature Overview</span>
+          <div className="min-w-[720px] overflow-hidden rounded-2xl border border-border/60 bg-card/30 text-sm shadow-[0_20px_30px_-25px_var(--card)]">
+            <div className="grid grid-cols-5 divide-x divide-border/40 border-b border-border/60 bg-card/60 px-6 py-4 text-xs font-semibold tracking-wide">
+              <span className="font-semibold text-foreground">
+                Feature Overview
+              </span>
+
               {compareColumns.map((col, i) => (
                 <span
                   key={col}
@@ -142,16 +145,16 @@ export function Pricing() {
 
             {compareGroups.map((group) => (
               <div key={group.title}>
-                <div className="bg-white/[0.07] text-brand-primary brightness-125 px-6 py-2.5 text-[11px] font-semibold tracking-[0.14em] uppercase">
+                <div className="border-b border-border/40 bg-brand-primary/[0.07] px-6 py-2.5 text-[11px] font-semibold tracking-[0.14em] text-brand-primary uppercase brightness-125 dark:bg-white/[0.07]">
                   {group.title}
                 </div>
 
                 {group.rows.map((row) => (
                   <div
                     key={row.label}
-                    className="border-border/40 grid grid-cols-5 items-stretch border-b text-sm last:border-b-0"
+                    className="grid grid-cols-5 items-stretch divide-x divide-border/40 border-b border-border/40 text-sm last:border-b-0"
                   >
-                    <span className="text-foreground/90 flex items-center px-6 py-4 font-medium">
+                    <span className="flex items-center px-6 py-4 font-medium text-foreground/90">
                       {row.label}
                     </span>
 
@@ -164,15 +167,15 @@ export function Pricing() {
                         )}
                       >
                         {value === true ? (
-                          <Check className="text-brand-primary brightness-125 size-4" />
+                          <Check className="size-4 text-brand-primary brightness-125" />
                         ) : value === "—" ? (
-                          <Minus className="text-muted-foreground/50 size-4" />
+                          <Minus className="size-4 text-muted-foreground/50" />
                         ) : (
                           <span
                             className={cn(
                               "text-xs",
                               i === 2
-                                ? "text-brand-primary brightness-125 font-medium"
+                                ? "font-medium text-brand-primary brightness-125"
                                 : "text-muted-foreground",
                             )}
                           >
