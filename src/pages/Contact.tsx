@@ -2,28 +2,20 @@ import { useState, type FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MapPin, Mail, Phone, Send, CheckCircle2, Loader2 } from "lucide-react";
 
-import { PageHeader } from "@/components/PageHeader";
 import {
   FacebookIcon,
   LinkedinIcon,
   YoutubeIcon,
-} from "@/components/icons/SocialIcons";
-import { Reveal } from "@/components/Reveal";
-import { CtaSection } from "@/components/CtaSection";
-import { Spotlight } from "@/components/Spotlight";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import { Checkbox } from "@/components/ui/checkbox";
-import {
-  Accordion,
-  AccordionItem,
-  AccordionTrigger,
-  AccordionContent,
-} from "@/components/ui/accordion";
-import { faqs } from "@/data/faq";
-import { GlowOrbs } from "@/components/GlowOrbs";
+} from "../components/icons/SocialIcons";
+import { GlowOrbs } from "../components/GlowOrbs";
+import { Reveal } from "../components/Reveal";
+import { Spotlight } from "../components/Spotlight";
+import { Label } from "../components/ui/label";
+import { Input } from "../components/ui/input";
+import { Textarea } from "../components/ui/textarea";
+import { Checkbox } from "../components/ui/checkbox";
+import { Button } from "../components/ui/button";
+
 
 const contactInfo = [
   {
@@ -116,7 +108,7 @@ export function Contact() {
                   key={label}
                   className="border-border/60 bg-card/40 flex items-start gap-4 rounded-xl border p-4 transition-colors hover:border-primary/40"
                 >
-                  <span className="bg-primary/15 text-primary relative flex size-10 shrink-0 items-center justify-center rounded-full">
+                  <span className="bg-primary/15 text-brand-primary brightness-125 relative flex size-10 shrink-0 items-center justify-center rounded-full">
                     <Icon className="size-4" />
                   </span>
                   <div className="relative">
@@ -257,27 +249,6 @@ export function Contact() {
           </div>
         </Reveal>
       </section>
-
-      {/* FAQ */}
-      <section className="mx-auto max-w-3xl px-5 pb-20 sm:px-8">
-        <Reveal>
-          <Accordion
-            type="single"
-            collapsible
-            defaultValue="item-0"
-            className="border-border/60 bg-card/40 rounded-2xl border px-6"
-          >
-            {faqs.map((faq, i) => (
-              <AccordionItem key={faq.question} value={`item-${i}`}>
-                <AccordionTrigger>{faq.question}</AccordionTrigger>
-                <AccordionContent>{faq.answer}</AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </Reveal>
-      </section>
-
-      <CtaSection />
     </>
   );
 }

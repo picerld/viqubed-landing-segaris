@@ -1,139 +1,138 @@
-import { useEffect, useState } from "react"
-import { Link, NavLink } from "react-router-dom"
-import { AnimatePresence, motion } from "framer-motion"
-import { Menu, X } from "lucide-react"
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
+import { Menu, X } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
-import { Logo } from "@/components/layout/Logo"
-import { ThemeToggle } from "@/components/ThemeToggle"
-import { cn } from "@/lib/utils"
 
-const navLinks = [
-  { label: "Product", to: "/" },
-  { label: "Solutions", to: "/solutions" },
-  { label: "Features", to: "/features" },
-  { label: "Pricing", to: "/pricing" },
-  { label: "Contact", to: "/contact" },
-]
+import { DesktopNavigation } from "../DesktopNavigation";
+import { MobileNavigation } from "../MobileNavigation";
+import { Logo } from "./Logo";
+import { ThemeToggle } from "../ThemeToggle";
+import { Button } from "../ui/button";
+import { cn } from "../../lib/utils";
+
 
 export function Navbar() {
-  const [scrolled, setScrolled] = useState(false)
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24)
-    onScroll()
-    window.addEventListener("scroll", onScroll, { passive: true })
-    return () => window.removeEventListener("scroll", onScroll)
-  }, [])
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll, {
+      passive: true,
+    });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const closeMenu = () => {
+    setOpen(false);
+  };
 
   return (
     <header className="sticky top-0 z-50 w-full">
-      <div
-        className={cn(
-          "mx-auto transition-[max-width,padding] duration-400 ease-out",
-          scrolled ? "max-w-4xl px-3 pt-3 sm:px-4" : "max-w-7xl px-5 pt-0 sm:px-8"
-        )}
-      >
+      <div className="mx-auto transition-[max-width,padding] duration-400 ease-out">
         <nav
           className={cn(
             "mx-auto grid grid-cols-[auto_1fr_auto] items-center transition-[height,border-radius,background-color,box-shadow,border-color,backdrop-filter] duration-400 ease-out md:grid-cols-[1fr_auto_1fr]",
-            scrolled
-              ? "h-14 rounded-full border border-border/60 bg-background/80 px-4 shadow-[0_16px_40px_-16px_rgba(0,0,0,0.65)] backdrop-blur-xl sm:px-5"
-              : "h-16 rounded-full border border-transparent bg-transparent px-0"
+            "h-20 px-4 sm:px-80",
+
+            !isScrolled &&
+              "border-transparent bg-transparent shadow-none backdrop-blur-0",
+
+            isScrolled &&
+              "border border-border/60 bg-background/55 shadow-xl backdrop-blur-[32px]",
           )}
         >
           <Logo />
 
-          <ul className="hidden items-center justify-self-center gap-1 md:flex">
-            {navLinks.map((link) => (
-              <li key={link.to}>
-                <NavLink
-                  to={link.to}
-                  end={link.to === "/"}
-                  className={({ isActive }) =>
-                    cn(
-                      "rounded-md px-3.5 py-2 text-sm font-medium transition-colors",
-                      isActive
-                        ? "text-primary font-bold"
-                        : "text-muted-foreground hover:text-foreground"
-                    )
-                  }
-                >
-                  {link.label}
-                </NavLink>
-              </li>
-            ))}
-          </ul>
+          <DesktopNavigation />
 
+          {/* Desktop Actions */}
           <div className="hidden items-center justify-self-end gap-3 md:flex">
             <ThemeToggle />
-            <Button variant="dark" size="sm" asChild>
-              <Link to="/contact">Log In</Link>
-            </Button>
-            <Button size="sm" asChild>
-              <Link to="/contact">Sign Up</Link>
+            <Button asChild>
+              <Link to="/contact">Explore Now</Link>
             </Button>
           </div>
 
+          {/* Mobile Actions */}
           <div className="col-start-3 flex items-center justify-self-end gap-2 md:hidden">
             <ThemeToggle />
+
             <button
               type="button"
               onClick={() => setOpen((v) => !v)}
-              className="text-foreground inline-flex size-10 shrink-0 items-center justify-center rounded-full border border-border/60"
+              className={cn(
+                "inline-flex size-10 shrink-0 items-center justify-center rounded-full border transition-all duration-200",
+                open
+                  ? "border-primary/40 bg-primary/10 text-primary"
+                  : "border-border/60 text-foreground",
+              )}
               aria-label="Toggle menu"
+              aria-expanded={open}
             >
-              {open ? <X className="size-5" /> : <Menu className="size-5" />}
+              <AnimatePresence mode="wait" initial={false}>
+                {open ? (
+                  <motion.span
+                    key="close"
+                    initial={{
+                      opacity: 0,
+                      rotate: -90,
+                      scale: 0.7,
+                    }}
+                    animate={{
+                      opacity: 1,
+                      rotate: 0,
+                      scale: 1,
+                    }}
+                    exit={{
+                      opacity: 0,
+                      rotate: 90,
+                      scale: 0.7,
+                    }}
+                  >
+                    <X className="size-5" />
+                  </motion.span>
+                ) : (
+                  <motion.span
+                    key="menu"
+                    initial={{
+                      opacity: 0,
+                      rotate: 90,
+                      scale: 0.7,
+                    }}
+                    animate={{
+                      opacity: 1,
+                      rotate: 0,
+                      scale: 1,
+                    }}
+                    exit={{
+                      opacity: 0,
+                      rotate: -90,
+                      scale: 0.7,
+                    }}
+                  >
+                    <Menu className="size-5" />
+                  </motion.span>
+                )}
+              </AnimatePresence>
             </button>
           </div>
         </nav>
 
-        <AnimatePresence>
-          {open && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.25, ease: "easeInOut" }}
-              className="border-border/60 bg-background/95 mt-2 overflow-hidden rounded-2xl border backdrop-blur-xl md:hidden"
-            >
-              <div className="flex flex-col gap-1 px-4 py-4">
-                {navLinks.map((link) => (
-                  <NavLink
-                    key={link.to}
-                    to={link.to}
-                    end={link.to === "/"}
-                    onClick={() => setOpen(false)}
-                    className={({ isActive }) =>
-                      cn(
-                        "rounded-lg px-3 py-2.5 text-sm font-medium",
-                        isActive
-                          ? "bg-accent text-foreground"
-                          : "text-muted-foreground"
-                      )
-                    }
-                  >
-                    {link.label}
-                  </NavLink>
-                ))}
-                <div className="mt-3 flex gap-3">
-                  <Button variant="dark" size="sm" className="flex-1" asChild>
-                    <Link to="/contact" onClick={() => setOpen(false)}>
-                      Log In
-                    </Link>
-                  </Button>
-                  <Button size="sm" className="flex-1" asChild>
-                    <Link to="/contact" onClick={() => setOpen(false)}>
-                      Sign Up
-                    </Link>
-                  </Button>
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        <MobileNavigation
+          open={open}
+          onClose={closeMenu}
+        />
       </div>
     </header>
-  )
+  );
 }

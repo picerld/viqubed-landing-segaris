@@ -1,6 +1,6 @@
 import { useRef, type ComponentPropsWithoutRef, type ElementType, type PointerEvent, type ReactNode } from "react"
 
-import { cn } from "@/lib/utils"
+import { cn } from "../lib/utils"
 
 type SpotlightProps<T extends ElementType> = {
   as?: T
@@ -40,7 +40,7 @@ export function Spotlight<T extends ElementType = "div">({
     >
       <span
         aria-hidden
-        className="spotlight-glow pointer-events-none absolute inset-0 -z-10 opacity-0 transition-opacity duration-500 group-hover/spot:opacity-100"
+        className="spotlight-glow pointer-events-none absolute inset-0 -z-10 opacity-0 transition-opacity duration-500 group-hover/spot:opacity-50"
       />
       {children}
     </Comp>

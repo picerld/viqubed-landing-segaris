@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import {
   ArrowRight,
   Play,
-  Sparkles,
   Type,
   Volume2,
   Video,
@@ -10,14 +9,15 @@ import {
   Box,
 } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { MediaPlaceholder } from "@/components/MediaPlaceholder";
-import { Reveal } from "@/components/Reveal";
-import { CtaSection } from "@/components/CtaSection";
-import { SolutionCard } from "@/components/SolutionCard";
-import { GlowOrbs } from "@/components/GlowOrbs";
-import { solutions } from "@/data/solutions";
+import { Button } from "../components/ui/button";
+import { MediaPlaceholder } from "../components/MediaPlaceholder";
+import { Reveal } from "../components/Reveal";
+import { CtaSection } from "../components/CtaSection";
+import { SolutionCard } from "../components/SolutionCard";
+import { GlowOrbs } from "../components/GlowOrbs";
+import { solutions } from "../data/solutions";
+import "animate.css";
+import videoHome from "../assets/videos/viqubed.mp4";
 
 const keyFeatures = [
   { icon: Type, label: "Text" },
@@ -35,10 +35,6 @@ export function Home() {
         <GlowOrbs />
         <div className="mx-auto max-w-5xl px-5 pt-16 pb-10 text-center sm:px-8 sm:pt-24">
           <Reveal>
-            <Badge variant="subtle" className="mx-auto">
-              <Sparkles className="size-3.5" />
-              No-Code Interactive 3D Platform
-            </Badge>
             <h1 className="text-foreground mx-auto mt-6 max-w-3xl text-4xl font-bold tracking-tight text-balance sm:text-6xl">
               Bring your 3D model to life vision —{" "}
               <span className="text-gradient-brand">
@@ -56,9 +52,16 @@ export function Home() {
               world.
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-              <Button variant="dark" size="lg" className="cursor-pointer">
-                <Play className="size-3.5 fill-current" />
-                Watch Presentation
+              <Button
+                variant="dark"
+                size="lg"
+                className="cursor-pointer"
+                asChild
+              >
+                <a href="#MediaPlaceholder">
+                  <Play className="size-3.5 fill-current" />
+                  Watch Presentation
+                </a>
               </Button>
               <Button size="lg" asChild>
                 <Link to="/contact">
@@ -73,20 +76,22 @@ export function Home() {
               realities effortlessly.
             </p>
           </Reveal>
-
-          <Reveal delay={0.1} className="mt-14">
-            <MediaPlaceholder
-              label="Hero Image / Video Presentation"
-              imageKeywords="technology,abstract"
-            />
-          </Reveal>
+          <div id="MediaPlaceholder" className="mt-14">
+            <Reveal delay={0.1} className="mt-14">
+              <MediaPlaceholder
+                label="Hero Image / Video Presentation"
+                imageKeywords="technology,abstract"
+                videoSrc={videoHome}
+              />
+            </Reveal>
+          </div>
         </div>
       </section>
 
       {/* Key features */}
       <section className="mx-auto max-w-4xl px-5 py-16 text-center sm:px-8">
         <Reveal>
-          <span className="text-primary text-xs font-semibold tracking-[0.2em] uppercase">
+          <span className="text-brand-primary brightness-125 text-xs font-semibold tracking-[0.2em] uppercase">
             Key Features
           </span>
           <h2 className="text-foreground mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
@@ -105,7 +110,7 @@ export function Home() {
                 key={label}
                 className="border-border/60 bg-card/50 text-foreground flex items-center gap-3 rounded-xl border px-10 py-5 text-sm font-medium transition-colors hover:border-primary/50 hover:bg-primary/10"
               >
-                <Icon className="text-primary size-5" />
+                <Icon className="text-brand-primary brightness-125 size-5" />
                 {label}
               </span>
             ))}
@@ -128,7 +133,8 @@ export function Home() {
           </p>
         </Reveal>
 
-        <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+
+        <div className="mt-12 grid lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4">
           {solutions.map((solution, i) => (
             <Reveal key={solution.slug} delay={(i % 3) * 0.08}>
               <SolutionCard solution={solution} compact />
@@ -137,51 +143,9 @@ export function Home() {
         </div>
       </section>
 
-      {/* Studio interface */}
-      <section className="mx-auto max-w-5xl px-5 py-20 text-center sm:px-8">
-        <Reveal>
-          {/* <span className="text-primary text-xs font-semibold tracking-[0.2em] uppercase">
-            Studio Interface
-          </span> */}
-          <h2 className="text-foreground mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
-            Build, Share, and Inspire Together
-          </h2>
-          <p className="text-muted-foreground mx-auto mt-4 max-w-4xl text-balance">
-            Empower your students, team, or community with immersive 3D content
-            that transforms abstract ideas into tangible reality. Shape the
-            future of learning and collaboration, one interactive experience at
-            a time.
-          </p>
-        </Reveal>
-        <Reveal delay={0.1} className="mt-10">
-          <MediaPlaceholder
-            label="Studio Editor UI Showcase"
-            imageKeywords="software,computer"
-          />
-        </Reveal>
-      </section>
-
-      {/* Gamified learning */}
-      <section className="mx-auto max-w-5xl px-5 py-20 text-center sm:px-8">
-        <Reveal>
-          <h2 className="text-foreground text-3xl font-bold tracking-tight sm:text-4xl">
-            Turn Studying into an Adventure
-          </h2>
-          <p className="text-muted-foreground mx-auto mt-4 max-w-xl text-balance">
-            Experience studying like never before through gamified, interactive
-            3D environments that make complex subjects genuinely enjoyable and
-            fun.
-          </p>
-        </Reveal>
-        <Reveal delay={0.1} className="mt-10">
-          <MediaPlaceholder
-            label="Gamified Learning Showcase"
-            imageKeywords="classroom,technology"
-          />
-        </Reveal>
-      </section>
-
-      <CtaSection />
+      <div className="mx-auto max-w-7xl px-5 sm:px-8 mt-16">
+        <CtaSection />
+      </div>
     </>
   );
 }

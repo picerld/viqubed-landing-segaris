@@ -1,15 +1,14 @@
 import { Link } from "react-router-dom";
 import { Check, Minus } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { PageHeader } from "@/components/PageHeader";
-import { Reveal } from "@/components/Reveal";
-import { CtaSection } from "@/components/CtaSection";
-import { Spotlight } from "@/components/Spotlight";
-import { cn } from "@/lib/utils";
-import { plans, compareGroups, compareColumns } from "@/data/pricing";
-import { GlowOrbs } from "@/components/GlowOrbs";
+import { Button } from "../components/ui/button";
+import { Badge } from "../components/ui/badge";
+import { Reveal } from "../components/Reveal";
+import { CtaSection } from "../components/CtaSection";
+import { Spotlight } from "../components/Spotlight";
+import { cn } from "../lib/utils";
+import { plans, compareGroups, compareColumns } from "../data/pricing";
+import { GlowOrbs } from "../components/GlowOrbs";
 
 export function Pricing() {
   return (
@@ -46,7 +45,7 @@ export function Pricing() {
                 className={cn(
                   "border-border/60 bg-card/40 relative flex h-full flex-col rounded-2xl border p-6 transition-all duration-300 hover:-translate-y-1",
                   plan.popular &&
-                    "border-primary/70 shadow-[0_20px_60px_-25px_var(--brand-primary)] ring-1 ring-primary/40",
+                    "border-primary/70 shadow-[0_20px_30px_-25px_var(--brand-primary)] ring-1 ring-primary/40",
                 )}
               >
                 {plan.popular && (
@@ -123,15 +122,20 @@ export function Pricing() {
         </Reveal>
 
         <Reveal delay={0.1} className="mt-10 overflow-x-auto">
-          <div className="border-border/60 min-w-[720px] overflow-hidden rounded-2xl border">
-            <div className="bg-card/60 grid grid-cols-5 border-b border-border/60 px-6 py-4 text-xs font-semibold tracking-wide">
-              <span className="text-muted-foreground">Feature Overview</span>
+          <div className="min-w-[720px] overflow-hidden rounded-2xl border border-border/60 bg-card/30 text-sm shadow-[0_20px_30px_-25px_var(--card)]">
+            <div className="grid grid-cols-5 divide-x divide-border/40 border-b border-border/60 bg-card/60 px-6 py-4 text-xs font-semibold tracking-wide">
+              <span className="font-semibold text-foreground">
+                Feature Overview
+              </span>
+
               {compareColumns.map((col, i) => (
                 <span
                   key={col}
                   className={cn(
                     "text-center",
-                    i === 2 ? "text-primary" : "text-foreground",
+                    i === 2
+                      ? "text-brand-primary brightness-125"
+                      : "text-foreground",
                   )}
                 >
                   {col}
@@ -141,35 +145,37 @@ export function Pricing() {
 
             {compareGroups.map((group) => (
               <div key={group.title}>
-                <div className="bg-primary/[0.06] text-primary px-6 py-2.5 text-[11px] font-semibold tracking-[0.14em] uppercase">
+                <div className="border-b border-border/40 bg-brand-primary/[0.07] px-6 py-2.5 text-[11px] font-semibold tracking-[0.14em] text-brand-primary uppercase brightness-125 dark:bg-white/[0.07]">
                   {group.title}
                 </div>
+
                 {group.rows.map((row) => (
                   <div
                     key={row.label}
-                    className="border-border/40 grid grid-cols-5 items-center border-b px-6 py-4 text-sm last:border-b-0"
+                    className="grid grid-cols-5 items-stretch divide-x divide-border/40 border-b border-border/40 text-sm last:border-b-0"
                   >
-                    <span className="text-foreground/90 font-medium">
+                    <span className="flex items-center px-6 py-4 font-medium text-foreground/90">
                       {row.label}
                     </span>
+
                     {row.values.map((value, i) => (
                       <span
                         key={i}
                         className={cn(
-                          "flex justify-center text-center",
-                          i === 2 && "bg-primary/[0.05]",
+                          "flex h-full items-center justify-center px-6 py-4 text-center",
+                          i === 2 && "bg-primary/[0.06]",
                         )}
                       >
                         {value === true ? (
-                          <Check className="text-primary size-4" />
+                          <Check className="size-4 text-brand-primary brightness-125" />
                         ) : value === "—" ? (
-                          <Minus className="text-muted-foreground/50 size-4" />
+                          <Minus className="size-4 text-muted-foreground/50" />
                         ) : (
                           <span
                             className={cn(
                               "text-xs",
                               i === 2
-                                ? "text-primary font-medium"
+                                ? "font-medium text-brand-primary brightness-125"
                                 : "text-muted-foreground",
                             )}
                           >

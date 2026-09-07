@@ -1,9 +1,9 @@
 import { useLayoutEffect } from "react"
 import { Outlet, useLocation } from "react-router-dom"
 
-import { Navbar } from "@/components/layout/Navbar"
-import { Footer } from "@/components/layout/Footer"
-import { BackToTop } from "@/components/BackToTop"
+import { Navbar } from "../../components/layout/Navbar"
+import { Footer } from "../../components/layout/Footer"
+import { BackToTop } from "../../components/BackToTop"
 
 export function RootLayout() {
   const { pathname } = useLocation()
