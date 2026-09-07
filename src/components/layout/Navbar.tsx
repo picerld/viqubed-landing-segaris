@@ -58,11 +58,6 @@ export function Navbar() {
           {/* Desktop Actions */}
           <div className="hidden items-center justify-self-end gap-3 md:flex">
             <ThemeToggle />
-
-            <Button variant="dark" asChild>
-              <Link to="/contact">Log In</Link>
-            </Button>
-
             <Button asChild>
               <Link to="/contact">Explore Now</Link>
             </Button>
